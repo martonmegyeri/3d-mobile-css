@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>3D</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="mobile-container-outer">
+        <i class="material-icons" id="btn-3d-mode">3d_rotation</i>
+        <div class="mobile-container-inner" id="mobile-container-inner">
+            <div class="front">
+                <div class="speaker"></div>
+                <div class="sensor"></div>
+                <div class="sensor sensor2"></div>
+                <div class="sensor sensor3"></div>
+                <div class="screen">
+                    <div class="header" id="mobile-header">
+                        <div class="logo">Logo</div>
+                        <div class="placeholder"></div>
+                        <i class="material-icons">menu</i>
+                    </div>
+                    <div class="header-shadow"></div>
+                    <div class="content">
+                        <div class="part1" id="mobile-part1">
+                            <div id="mobile-3-textdivs">
+                                <div class="text-div"></div>
+                                <div class="text-div center"></div>
+                                <div class="text-div small"></div>
+                            </div>
+                            <div id="mobile-3-textdivs-shadows">
+                                <div class="text-div"></div>
+                                <div class="text-div center"></div>
+                                <div class="text-div small"></div>
+                            </div>
+                            <div class="textbox" id="mobile-textbox1">
+                                <div class="text-div small"></div>
+                            </div>
+                            <div class="textbox" id="mobile-textbox1-shadow">
+                                <div class="text-div small"></div>
+                            </div>
+                            <div class="textbox textbox-inactive" id="mobile-textbox2">
+                                <div class="text-div small"></div>
+                            </div>
+                            <div class="textbox textbox-inactive" id="mobile-textbox2-shadow">
+                                <div class="text-div small"></div>
+                            </div>
+                            <div class="textbox textbox-button" id="mobile-textbox-btn">
+                                <div class="text-div small"></div>
+                            </div>
+                            <div class="textbox" id="mobile-textbox-btn-shadow">
+                                <div class="text-div small"></div>
+                            </div>
+                        </div>
+                        <div class="part2" id="mobile-part2">
+                            <div class="text-div" id="mobile-textdiv"></div>
+                            <div class="text-div" id="mobile-textdiv-shadow"></div>
+                            <div class="box-row">
+                                <div class="box" id="mobile-box1"></div>
+                                <div class="box" id="mobile-box1-shadow"></div>
+                                <div class="box" id="mobile-box2"></div>
+                                <div class="box" id="mobile-box2-shadow"></div>
+                            </div>
+                            <div class="box-row box-row2">
+                                <div class="box" id="mobile-box3"></div>
+                                <div class="box" id="mobile-box3-shadow"></div>
+                                <div class="box" id="mobile-box4"></div>
+                                <div class="box" id="mobile-box4-shadow"></div>
+                            </div>
+                            <div class="layers" id="btn-layers">
+                                <i class="material-icons">layers</i>
+                            </div>
+                            <div id="btn-layers-shadow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="back"></div>
+            <div class="bottom">
+                <div class="hole"></div>
+                <div class="hole hole2"></div>
+                <div class="hole hole3"></div>
+                <div class="hole charger"></div>
+            </div>
+            <div class="bottom2"></div>
+            <div class="right"></div>
+        </div>
+    </div>
+
+    <script>
+
+        function toggleMobile3d() {
+            document.querySelector('#btn-layers').classList.toggle('layer-view');
+            document.querySelector('#mobile-part1 #mobile-3-textdivs').classList.toggle('layer-view');
+            document.querySelector('#mobile-part1 #mobile-textbox1').classList.toggle('layer-view');
+            document.querySelector('#mobile-part1 #mobile-textbox2').classList.toggle('layer-view');
+            document.querySelector('#mobile-part1 #mobile-textbox-btn').classList.toggle('layer-view');
+            document.querySelector('#mobile-part2 #mobile-textdiv').classList.toggle('layer-view');
+            document.querySelector('#mobile-part2 #mobile-box1').classList.toggle('layer-view');
+            document.querySelector('#mobile-part2 #mobile-box2').classList.toggle('layer-view');
+            document.querySelector('#mobile-part2 #mobile-box3').classList.toggle('layer-view');
+            document.querySelector('#mobile-part2 #mobile-box4').classList.toggle('layer-view');
+            document.querySelector('#mobile-header').classList.toggle('layer-view');
+        }
+
+        var mobileAnimationInterval = setInterval(() => {
+            toggleMobile3d();
+        }, 5000);
+
+        document.querySelector('#btn-layers').addEventListener('click', () => {
+            toggleMobile3d();
+            clearInterval(mobileAnimationInterval);
+
+            mobileAnimationInterval = setInterval(() => {
+                toggleMobile3d();
+            }, 5000);
+        });
+
+        document.querySelector('#btn-3d-mode').addEventListener('click', () => {
+            document.querySelector('#mobile-container-inner').classList.toggle('threed-view-off');
+            document.querySelector('#btn-3d-mode').classList.toggle('rotate');
+        });
+
+        setTimeout(() => {
+            toggleMobile3d();
+        }, 2000);
+
+    </script>
+
+</body>
+
+</html>
